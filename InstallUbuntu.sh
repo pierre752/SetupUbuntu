@@ -23,7 +23,6 @@ sudo apt-get install -y curl
 # https://toolbelt.heroku.com/debian
 # wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
-fi
 git clone https://github.com/pierre752/Ubuntudotfiles.git
 # s is for symboic link and b is for backup
 ln -sb dotfiles/.screenrc .
