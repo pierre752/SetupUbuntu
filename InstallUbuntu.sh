@@ -48,4 +48,4 @@ if which git >/dev/null; then
 else
 	echo "${RED}Attention: ${DEFAULT} Git not found"
 fi
-echo "All links made correctly for a $KERNEL operating system, if there is an error, please report"
+echo "All links made correctly for a $KERNEL operating system, if there is an error, please report to pierre752@gmail.com"
