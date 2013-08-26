@@ -28,15 +28,8 @@ sudo apt-get install -y curl
 #Config settings for GIT
 # Git
 if which git > /dev/null; then
-	touch ${PATH_TO_FILE}/Ubuntudotfiles/git/gitconfig
 	ln -sb ${PATH_TO_FILE}/Ubuntudotfiles/git/gitconfig ~/.gitconfig
 	ln -sb ./Ubuntudotfiles/git/gitignore_global ~/.gitignore
-	git config --global user.name "Pierre Edouard (${USER})"
-	git config --global user.email "pierre752@gmail.com"
-	git config --global merge.tool vimdiff
-	git config --global color.ui true
-	git config --global core.editor vim
-	git config --global core.excludesfile ~/.gitignore
 	# Download auto completion
 	curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 	if [ -d ./Ubuntudotfiles ]
