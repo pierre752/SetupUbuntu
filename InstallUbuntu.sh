@@ -23,20 +23,14 @@ sudo apt-get install -y curl
 # https://toolbelt.heroku.com/debian
 # wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
-git clone https://github.com/pierre752/Ubuntudotfiles.git
-# s is for symboic link and b is for backup
-ln -sb dotfiles/.screenrc .
-ln -sb dotfiles/.bash_prorfile ~/
-ln -sb dotfiles/.bashrc ~/
-ln -sb dotfiles/.bashrc_custom ~/
 
 
 #Config settings for GIT
 # Git
-if which git >/dev/null; then
-	touch ${PATH_TO_FILE}/git/gitconfig
-	ln -s ${PATH_TO_FILE}/git/gitconfig ~/.gitconfig
-	ln -s ${PATH_TO_FILE}/git/gitignore_global ~/.gitignore
+if which git > /dev/null; then
+	touch ${PATH_TO_FILE}/Ubuntudotfiles/git/gitconfig
+	ln -sb ${PATH_TO_FILE}/Ubuntudotfiles/git/gitconfig ~/.gitconfig
+	ln -sb ./Ubuntudotfiles/git/gitignore_global ~/.gitignore
 	git config --global user.name "Pierre Edouard (${USER})"
 	git config --global user.email "pierre752@gmail.com"
 	git config --global merge.tool vimdiff
@@ -45,6 +39,20 @@ if which git >/dev/null; then
 	git config --global core.excludesfile ~/.gitignore
 	# Download auto completion
 	curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+	if [ -d ./Ubuntudotfiles ]
+		then
+			cd Ubuntudotfiles/;
+			git pull;
+			cd ..
+		else
+			git clone https://github.com/pierre752/Ubuntudotfiles.git
+	fi
+
+# s is for symboic link and b is for backup
+ln -sb dotfiles/.screenrc .
+ln -sb dotfiles/.bash_prorfile ~/
+ln -sb dotfiles/.bashrc ~/
+ln -sb dotfiles/.bashrc_custom ~/
 else
 	echo "${RED}Attention: ${DEFAULT} Git not found"
 fi
