@@ -2,7 +2,7 @@
 # Simple setup.sh for configuring Ubuntu 12.04 LTS EC2 instance
 # for headless setup. 
 
-export DIRECTORY=`dirname $0`
+export DIRECTORY="$(cd `dirname $0` && pwd)";
 
 # Install nvm: node-version manager
 # https://github.com/creationix/nvm
@@ -29,7 +29,7 @@ sudo apt-get install -y curl
 # Git
 if which git > /dev/null; then
 	ln -sb ${DIRECTORY}/Ubuntudotfiles/git/gitconfig ~/.gitconfig
-	ln -sb ./Ubuntudotfiles/git/gitignore_global ~/.gitignore
+	ln -sb ${DIRECTORY}/Ubuntudotfiles/git/gitignore_global ~/.gitignore
 	# Download auto completion
 	curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 	if [ -d ./Ubuntudotfiles ]
@@ -42,10 +42,10 @@ if which git > /dev/null; then
 	fi
 
 # s is for symboic link and b is for backup
-ln -sb dotfiles/.screenrc .
-ln -sb dotfiles/.bash_prorfile ~/
-ln -sb dotfiles/.bashrc ~/
-ln -sb dotfiles/.bashrc_custom ~/
+ln -sb ${DIRECTORY}/Ubuntudotfiles/.screenrc ~/
+ln -sb ${DIRECTORY}/Ubuntudotfiles/.bash_profile ~/
+ln -sb ${DIRECTORY}/Ubuntudotfiles/.bashrc ~/
+ln -sb ${DIRECTORY}/Ubuntudotfiles/.bashrc_custom ~/
 else
 	echo "${RED}Attention: ${DEFAULT} Git not found"
 fi
