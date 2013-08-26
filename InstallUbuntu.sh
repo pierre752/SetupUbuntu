@@ -2,7 +2,7 @@
 # Simple setup.sh for configuring Ubuntu 12.04 LTS EC2 instance
 # for headless setup. 
 
-export PATH_TO_FILE="`dirname \"$0\"`"
+export DIRECTORY=`dirname $0`
 
 # Install nvm: node-version manager
 # https://github.com/creationix/nvm
@@ -28,7 +28,7 @@ sudo apt-get install -y curl
 #Config settings for GIT
 # Git
 if which git > /dev/null; then
-	ln -sb ${PATH_TO_FILE}/Ubuntudotfiles/git/gitconfig ~/.gitconfig
+	ln -sb ${DIRECTORY}/Ubuntudotfiles/git/gitconfig ~/.gitconfig
 	ln -sb ./Ubuntudotfiles/git/gitignore_global ~/.gitignore
 	# Download auto completion
 	curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
